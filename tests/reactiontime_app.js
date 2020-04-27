@@ -16,7 +16,7 @@ const randomDelay = (minimum, maximum) => {
 
 
 const init = () => {
-    // changes bg to red and awaits green
+    // changes bg to red
     console.log('initment')
     TEST.style.backgroundColor = "rgba(163, 36, 20,0.8)";
     img.style.display = "none";
@@ -28,7 +28,7 @@ const init = () => {
 }
 
 
-const changeForGreen = async (delay) => {
+const waitForGreen = async (delay) => {
     // waits DELAY and changes for green 
     return new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -41,6 +41,7 @@ const changeForGreen = async (delay) => {
 
 
 const react = async () => {
+    //on click returns performance.now()
     return new Promise((resolve, reject) => {
         TEST.addEventListener("click", async () => {
             end = performance.now();
@@ -50,18 +51,29 @@ const react = async () => {
 }
 
 
-const showResult = (time, iteration) => {
+const showResult = (time, iteration, results) => {
+    //shows results
     console.log("showing results");
+    dots.style.display = "none";
+    img.src = "../images/clock.png";
+    img.style.display = "block";
     TEST.style.backgroundColor = "rgb(43, 135, 209)";
     title.textContent = `${time} ms`;
-    triesNumber.textContent = `${iteration+1} of 5`
-    averageTime.textContent = `${time}ms`;
-    subtitle[0].textContent = "Click to keep going";
-    subtitle[0].style.display = "block";
+    triesNumber.textContent = `${iteration+1} of 5`;
+
+    const reducer = (prev, curr) => {
+        return prev + curr
+    }
+    averageResult =  Math.floor(results.reduce(reducer) / results.length);
+    averageTime.textContent = `${averageResult}ms`;
+
+    subtitle[1].textContent = "Click to keep going";
+    subtitle[1].style.display = "block";
 }
 
 
 const waitForUser = async () => {
+    //waits for user to click
     return new Promise((resolve, reject) => {
         TEST.addEventListener("click", async () => {
             resolve(end);
@@ -71,6 +83,7 @@ const waitForUser = async () => {
 
 
 const test = async () => {
+
     console.log("Test started");
     const resutlArray = []
     const reactionTime = document.getElementById("reaction-time");
@@ -80,24 +93,28 @@ const test = async () => {
     TEST.removeEventListener("click", test);
 
     for(let i=0; i<5; i++){
+
         init()
-        const wait = await changeForGreen(delay);
+        const wait = await waitForGreen(delay);
+
         if (wait) {
+            
             let start = performance.now();                  //starts timing
             const end = await react();                      // ends timing and returns performance.now()
             const time = Math.floor(end - start);           // calculates time
-            resutlArray.push(time)
-            showResult(time,i);
-            await waitForUser()                                // waits for user to click in order to move
+            resutlArray.push(time);
+            showResult(time,i, resutlArray);
+            
+            await waitForUser();                                // waits for user to click in order to move
         };
     };
-    console.log("end");
+    console.log("Test ended");
 }
 
 
 
 
-
-
 TEST.addEventListener("click", test)
+
+
 
