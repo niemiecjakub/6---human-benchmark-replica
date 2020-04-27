@@ -14,7 +14,7 @@ const randomDelay = (minimum, maximum) => {
 }
 
 
-const initGame = () => {
+const init = () => {
     // changes bg to red and awaits green
     console.log('initment')
     TEST.style.backgroundColor = "rgba(163, 36, 20,0.8)";
@@ -32,29 +32,51 @@ const changeForGreen = async (delay) => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             TEST.style.backgroundColor = "rgba(60, 230, 90,0.75)";
-            title.textContent = "Click!"
-            resolve ("true")
-        }, delay) 
+            title.textContent = "Click!";
+            resolve("true")
+        }, delay)
     })  
 }
 
 
 
-const initTest = async () => {
+const react = async () => {
+    return new Promise((resolve, reject) => {
+        TEST.addEventListener("click", async () => {
+            end = performance.now()
+            resolve(end);
+        })
+    })
+}
+
+
+
+// TEST.addEventListener("click", async () => {
+//     const end = await react()
+// })
+
+
+const test = async () => {
     console.log("Test started");
     const reactionTime = document.getElementById("reaction-time");
     const triesNumber = document.getElementById("tries-number");
     const delay = randomDelay(1000,8000);
 
-    TEST.removeEventListener("click", initTest);
+    TEST.removeEventListener("click", test);
 
-    initGame();
-    const clickNow = await changeForGreen(delay);
-    console.log(clickNow)
-
+    init();
+    const wait = await changeForGreen(delay);
+    if (wait) {
+        let start = performance.now()   //starts timing
+        const end = await react()       // ends timing and returns performance.now()
+        const time = end - start        // calculates time
+    }
 }
 
 
 
 
-TEST.addEventListener("click", initTest)
+
+
+TEST.addEventListener("click", test)
+
