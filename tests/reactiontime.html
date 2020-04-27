@@ -9,7 +9,7 @@
 <body>
     <header>
         <div class="navigation">
-            <a class="current" href="#">
+            <a class="current" href="../index.html">
                 <p>
                     <img class="current-image" src="../images/little.png">
                     HUMAN BENCHMARK
@@ -33,19 +33,20 @@
             <section class="container">
                 <div class="group-test">
                     <img class="main-img" src="../images/bolt.png"/>
+                    <h1 class="dots">...</h1>
                 </div>
                 <div class="group-test">
-                    <h1>Reaction Time Test</h1>
+                    <h1 class="title">Reaction Time Test</h1>
                     <h2>When the red box turns green, click as quickly as you can.</h2>
                     <h2>Click anywhere to start.</h2>
                     <div class="progress">
                         <div class="score">
                             <span class="txt">Average</span> 
-                            <span class="counter">0ms</span>
+                            <span id="reaction-time" class="counter ">0ms</span>
                         </div>
                         <div class="score">
                             <span class="txt">Tries</span>
-                            <span class="counter">0 of 5</span>
+                            <span id="tries-number" class="counter">0 of 5</span>
                         </div>
                     </div>
                 </div>
