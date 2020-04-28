@@ -16,6 +16,7 @@ const randomDelay = (minimum, maximum) => {
 
 
 const init = () => {
+
     // changes bg to red
     console.log('initment')
     TEST.style.backgroundColor = "rgba(163, 36, 20,0.8)";
@@ -29,6 +30,7 @@ const init = () => {
 
 
 const waitForGreen = async (delay) => {
+
     // waits DELAY and changes for green 
     return new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -41,6 +43,7 @@ const waitForGreen = async (delay) => {
 
 
 const react = async () => {
+
     //on click returns performance.now()
     return new Promise((resolve, reject) => {
         TEST.addEventListener("click", async () => {
@@ -52,6 +55,7 @@ const react = async () => {
 
 
 const showResult = (time, iteration, results) => {
+
     //shows results
     console.log("showing results");
     dots.style.display = "none";
@@ -74,6 +78,7 @@ const showResult = (time, iteration, results) => {
 
 const waitForUser = async () => {
     //waits for user to click
+
     return new Promise((resolve, reject) => {
         TEST.addEventListener("click", async () => {
             resolve(end);
@@ -93,7 +98,6 @@ const test = async () => {
     TEST.removeEventListener("click", test);
 
     for(let i=0; i<5; i++){
-
         init()
         const wait = await waitForGreen(delay);
 
