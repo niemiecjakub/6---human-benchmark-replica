@@ -60,6 +60,9 @@ header {
 .nav-item:hover {
     background-color: rgb(197, 197, 197, 0.35);
 }
+
+
+
 /* MAIN */
 main{
     position: relative;
@@ -68,6 +71,7 @@ main{
 #test{
     width:100%;
     background-color: rgb(43, 135, 209);
+    cursor: pointer;
 }
 .container{
     max-width: 778px;
@@ -80,7 +84,7 @@ main{
     font-weight: 400;
 }
 #test .container{
-    animation: entry-effect 0.5s ease forwards;
+    animation: entry-effect 0.5s linear forwards;
 }
 .group-test{
     display: flex;
@@ -93,33 +97,20 @@ main{
     font-weight: 400;
 }
 .group-test h2{
-    font-size: 24px;
+    font-size: 21px;
     font-weight: 200;
-}
-.group-test a{
-    display: block;
-    background-color: rgb(255, 228, 50);
-    margin-top:40px;
-    width: 150px;
-    height: 47px;
-    border-radius: 50px;
-    line-height: 47px;
-    font-weight: 600;
     text-align: center;
-    color: #333;
-    cursor: pointer;
+    opacity:1; 
 }
-.group-test a:hover{
-    background-color: rgb(245, 218, 40);
-}
+
 @keyframes entry-effect{
     from{
         transform: translateY(20px);
-         opacity:0
+        opacity:0;
         }
     to{
         transform: translateY(0);
-        opacity: 1
+        opacity: 1;
     }
 }
 .main-img{
@@ -127,78 +118,21 @@ main{
     height: 100px;
 }
 
-/* CARD LIST */
-#cards .container{
-    padding: 25px;
-}
-#cards {
-    width:100%;
-}
-
-.card-list{
-    max-width: 778px;
+.progress {
     display: flex;
-    margin:5px;
+    margin-top:30px;
 }
-.card-list a{
-    text-decoration: none;
-}
-.card{
-    width:258px;
-    height: 248px;
-    /* background-color: greenyellow; */
-    border-radius: 5px 5px 0 0;
-    border-top: 6px solid;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding:15px;
-    box-shadow:rgba(0, 0, 0, 0.15) 0px 0px 3px 0px;
-    outline-color: rgb(51, 51, 51);
-    color: rgb(51, 51, 51);
-    cursor: pointer;
-    margin:5px;
-}
-.card:hover{
-    box-shadow:rgba(0, 0, 0, 0.15) 4px 4px 4px 4px;
-}
-.card-img {
-    width: 70px;
-    height: 70px;
-    margin-top:20px;
-    border-radius: 10px;
-    padding:5px;
-    border: 3px solid;
-}
-.yellow{
-    border-color:rgb(254, 189, 27); 
-}
-.green{
-    border-color:rgb(81, 184, 72);
+.dots {
+    display:none;
+    margin-top:100px;
+    font-size: 120px;
 }
 
-.card h3{
-    margin-top: 15px;
-    font-weight: 700;
-    font-size: 21px;
+.score .txt{
+    padding-right:6px;
+    border-right: 1px solid hsla(0,0%,100%,.6);
+    color: hsla(0,0%,100%,.6);
 }
-.card h4{
-    margin-top: 10px;
-    font-size: 14px;
-    font-weight: 300;
-    text-align: center;
-}
-
-/* footer */
-#footer .container{
-
-    height:150px;
-    align-items: flex-end;
-    margin-top:40px;
-}
-.copy{
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: 100;
-    color: #222121
+.score:nth-of-type(1){
+    margin-right: 30px;
 }
