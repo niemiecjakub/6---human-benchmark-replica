@@ -32,25 +32,30 @@
         <div id="test">
             <section class="container">
                 <div class="group-test">
-                    <img class="main-img" src="../images/bolt.png"/>
-                    <h1 class="dots">...</h1>
+                    <img class="main-img" src="../images/one.png"/>
                 </div>
                 <div class="group-test">
-                    <h1 id="title">Reaction Time Test</h1>
-                    <h2>When the red box turns green, click as quickly as you can.</h2>
-                    <h2>Click anywhere to start.</h2>
-                    <div class="progress">
-                        <div class="score">
-                            <span class="txt">Average</span> 
-                            <span id="average-time" class="counter ">0ms</span>
-                        </div>
-                        <div class="score">
-                            <span class="txt">Tries</span>
-                            <span id="tries-number" class="counter">0 of 5</span>
-                        </div>
-                    </div>
+                    <h1 id="title">Number memory</h1>
+                    <h2>The average person can remember 7 numbers at once. Can you do more?</h2>
                 </div>
+                <button class="button">Start</button>
             </section>
+
+            <section id="remember" class="container">
+                <div class="number-to-remember">2</div>
+                <div class="loader">fdf</div>
+                
+            </section>
+
+            <section id="answer" class="container">
+                <div class="group-test">
+                    <h3>What was the number?</h3>
+                    <h4>Press enter or click to submit</h4>
+                </div>
+                <input class="input" type="text">
+                <button class="button">Submit</button>
+            </section>
+
         </div>
     </main>
     <script src="reactiontime_app.js"></script>
