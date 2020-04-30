@@ -145,6 +145,7 @@ main{
     max-width: 778px;
     display: flex;
     margin:5px;
+    justify-content: center;
 }
 .card-list a{
     text-decoration: none;
