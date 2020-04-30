@@ -14,6 +14,8 @@ const ANSWER_BUTTON = document.querySelector(".answer-button");
 const SUMMARY_SECTION = document.getElementById("summary");
 const NUMBER_OVERVIEW = document.querySelector(".number-to-remember-overview");
 const YOUR_ANSWER = document.querySelector(".your-answer");
+const CORRECT = document.querySelector(".correct");
+const INCORRECT = document.querySelector(".incorrect");
 const LEVEL = document.querySelector(".level");
 const SUMMARY_BUTTON = document.querySelector(".summary-button");
 
@@ -68,8 +70,8 @@ const answerWindow = (number) =>{
             }
         });
     });
-
 };
+
 
 
 const summarySection = async (number, i, answer) => {
@@ -105,10 +107,10 @@ const app = async () => {
         await rememberWindow(number_to_guess);
         try{
             const answer = await answerWindow (number_to_guess);
+
             await summarySection(number_to_guess, i, answer);
 
         } catch(error) {
-    
             await summarySection(number_to_guess, i, answer);
             gameIsOn = false;
             app()

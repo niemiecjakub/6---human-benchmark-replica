@@ -186,6 +186,12 @@ main{
 .wrong-answer {
     animation: blinkRed 0.3s  ease-in forwards;
 }
+@keyframes blinkRed {
+    0%{background-color: red;}
+    100%{background-color: rgb(43, 135, 209)}
+}
+
+@keyframes 
 #summary h3,
 #summary h4{
     font-size: 20px;
@@ -194,8 +200,7 @@ main{
     margin-top: 20px;
     font-size: 48px;
 }
-
-@keyframes blinkRed {
-    0%{background-color: red;}
-    100%{background-color: rgb(43, 135, 209)}
+.incorrect {
+    color: black;
+    text-decoration: line-through;
 }
