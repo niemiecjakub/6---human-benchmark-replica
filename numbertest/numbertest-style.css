@@ -73,6 +73,9 @@ main{
     background-color: rgb(43, 135, 209);
     cursor: pointer;
 }
+#main-screen{
+    animation: entry-effect 0.5s linear forwards;
+}
 .container{
     max-width: 778px;
     height: 540px;
@@ -83,9 +86,6 @@ main{
     padding:20px;
     color:  #fff;
     font-weight: 400;
-}
-#main-screen{
-    animation: entry-effect 0.5s linear forwards;
 }
 .group-test{
     display: flex;
@@ -183,6 +183,9 @@ main{
     display: none;
     justify-content: space-evenly;
 }
+.wrong-answer {
+    animation: blinkRed 0.3s  ease-in forwards;
+}
 #summary h3,
 #summary h4{
     font-size: 20px;
@@ -190,4 +193,9 @@ main{
 #summary .level{
     margin-top: 20px;
     font-size: 48px;
+}
+
+@keyframes blinkRed {
+    0%{background-color: red;}
+    100%{background-color: rgb(43, 135, 209)}
 }

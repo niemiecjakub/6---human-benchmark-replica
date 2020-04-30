@@ -1,4 +1,6 @@
 // DOM elements
+const TEST = document.getElementById("test");
+
 const START_SCREEN = document.getElementById("main-screen");
 const START_BUTTON = document.querySelector(".start-button");
 
@@ -57,11 +59,12 @@ const answerWindow = (number) =>{
         ANSWER_SECTION.style.display = "flex";
         INPUT.value = ""
         ANSWER_BUTTON.addEventListener("click", () => {
-            ANSWER_SECTION.style.display = "none";
-            if (getAnswer() === number) {
-                resolve("correct");
+        ANSWER_SECTION.style.display = "none";
+        answer = getAnswer();
+            if (answer === number) {
+                resolve(answer);
             } else {
-                reject("failed");
+                reject(answer);
             }
         });
     });
@@ -76,8 +79,12 @@ const summarySection = async (number, i, answer) => {
         LEVEL.textContent = `Level ${i}`;
         NUMBER_OVERVIEW.textContent = `${number}`;
         YOUR_ANSWER.textContent = `${answer}`;
+
         if (NUMBER_OVERVIEW.textContent !== YOUR_ANSWER.textContent) {
-            SUMMARY_BUTTON.textContent = "Try again"
+            SUMMARY_BUTTON.textContent = "Try again";
+            YOUR_ANSWER.style.color = "black";
+            YOUR_ANSWER.style.textDecoration = "line-through"
+            TEST.classList.toggle("wrong-answer");
         }
         SUMMARY_BUTTON.addEventListener("click", () => {
             SUMMARY_SECTION.style.display = "none"
@@ -91,24 +98,21 @@ const summarySection = async (number, i, answer) => {
 
 
 const app = async () => {
-
     let gameIsOn = true
     let i = 1;
-
     while (gameIsOn) {
         const number_to_guess = randomNumber(i);
         await rememberWindow(number_to_guess);
         try{
-            await answerWindow (number_to_guess);
-            const answer = getAnswer()
-            await summarySection(number_to_guess, i, getAnswer());
+            const answer = await answerWindow (number_to_guess);
+            await summarySection(number_to_guess, i, answer);
 
         } catch(error) {
-            await summarySection(number_to_guess, i, getAnswer());
-
-            gameIsOn = false
-        }
     
+            await summarySection(number_to_guess, i, answer);
+            gameIsOn = false;
+            app()
+        }
     i++
     }
     console.log("end")
@@ -116,3 +120,7 @@ const app = async () => {
 
 
 START_BUTTON.addEventListener("click", app)
+
+
+
+
