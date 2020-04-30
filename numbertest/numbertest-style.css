@@ -150,6 +150,23 @@ main{
 #remember .number-to-remember{
     font-size:76px;
 }
+.loader,
+.load-bar{
+    width: 100px;
+    height:5px;
+    overflow: hidden;
+    background-color: rgba(140, 192, 235, 0.9);
+}
+.load-bar{
+    animation: load 3s linear;
+    background-color: white;
+}
+@keyframes load{
+    from{transform: translateX(0)}
+    to{transform: translateX(-100px)}
+}
+
+
 #answer {
     /* change to flex to display */
     justify-content: center;
