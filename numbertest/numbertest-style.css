@@ -84,7 +84,7 @@ main{
     color:  #fff;
     font-weight: 400;
 }
-#test .container{
+#main-screen{
     animation: entry-effect 0.5s linear forwards;
 }
 .group-test{
@@ -117,9 +117,17 @@ main{
 .main-img{
     margin: 70px auto 40px auto;
     height: 100px;
+    animation: blink 3s ease infinite;
+}
+@keyframes blink{
+    0%{opacity: 0.2;}
+    50%{opacity: 0.9;}
+    100%{opacity: 0.2;}
 }
 
-.button {
+.start-button,
+.answer-button,
+.summary-button {
     position: relative;
     top: 30px;
     padding:13px 32px;
@@ -134,18 +142,14 @@ main{
 .button:hover{
     background-color: rgb(245, 218, 40);
 }
-
-
 #remember {
     /* change to flex to display */
     display:none;
     justify-content: center;
-
 }
 #remember .number-to-remember{
     font-size:76px;
 }
-
 #answer {
     /* change to flex to display */
     justify-content: center;
@@ -171,4 +175,19 @@ main{
     color: white;
     text-align: center;
     margin-top:30px;
+    font-size:52px;
+}
+
+#summary {
+    /* change to flex to display */
+    display: none;
+    justify-content: space-evenly;
+}
+#summary h3,
+#summary h4{
+    font-size: 20px;
+}
+#summary .level{
+    margin-top: 20px;
+    font-size: 48px;
 }

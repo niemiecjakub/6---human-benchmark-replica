@@ -125,6 +125,12 @@ main{
 .main-img{
     margin: 70px auto 40px auto;
     height: 100px;
+    animation: blink 3s ease infinite;
+}
+@keyframes blink{
+    0%{opacity: 0.2;}
+    50%{opacity: 0.9;}
+    100%{opacity: 0.2;}
 }
 
 /* CARD LIST */
